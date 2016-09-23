@@ -79,7 +79,7 @@ function createPartyApp(myself) {
 				'font-variant: normal;',
 				'font-weight: normal;',								
 				'padding:0.5em 0.5em 0.5em 1.5em">',
-			'<a class="no-party" href="http://www.partyscript.net" target="_blank">PartyScript.net</a>&nbsp;',
+			'<a class="no-party" href="https://wstabosz.github.io/PartyScript/" target="_blank">PartyScript</a>&nbsp;',
 			'<a class="no-party" style="',
 				'position: absolute;',
 				'top: 0;',
