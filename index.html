@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Party Script</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="party.css" /> 
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>	
+	
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	
+</head>
+<body>
+	
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	  <div class="container">
+		<div class="text-center" id="header">Party Script</div> 
+	  </div>
+	</nav>
+	
+    <div class="container">	
+				
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+			<h3 class="panel-title">Introduction</h3>
+		  </div>
+		  <div class="panel-body">
+			<p>
+				Party Script is a Javascript bookmarklet that turns any web page into a party.
+			</p>
+			<p>
+				It can be used to prank friends who forget to lock their computer. 
+				Upon activation of the bookmarklet, you will have 5 seconds before it is armed.
+        When your victim returns to their computer and moves their mouse, the party will begin.
+			</p>
+			
+			<h4>Usage</h4>
+			<p>
+				<ol>
+					<li>On your victim's computer, open a new tab and navigate to this web page.</li>
+					<li>Install the bookmarklet to their web browser using the button below.</li>
+					<li>Go back to the tab on which you want to host the party, and click the bookmarklet to activate the script.</li>
+				</ol>
+			</p>
+			
+			<button id="installButton" type="button" class="btn btn-success ">
+				<span class="glyphicon glyphicon-glass"></span> Install
+			</button>
+		  </div>
+		</div>							
+			
+		<!-- START: Settings -->
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+			<h3 class="panel-title inline-block">Settings</h3>						
+			<div class="circle-div pointer pull-right" data-toggle="modal" data-target="#settingsHelpModal">?</div>
+			<div id="resetSettings" class="circle-div pointer pull-right bump-right" data-toggle="tooltip" data-placement="top" title="Reset Settings" >
+				<span class="glyphicon glyphicon-repeat btn-small flip-y "></span>
+			</div>						
+		  </div>
+		  <div class="panel-body">
+			<div class="row">
+
+			<div class="form-group col-md-2">
+				<label for="animateDelay">Delay</label>
+				<input id="animateDelay" type="text" class="form-control" />
+			</div>			
+			<div class="form-group col-md-2">
+				<label for="min">Min</label>
+				<input id="min" type="text" class="form-control" />
+			</div>
+			<div class="form-group col-md-2">
+				<label for="max">Max</label>
+				<input id="max" type="text" class="form-control" />
+			</div>			
+			<div class="form-group col-md-2">
+				<label for="bookmarkletName">Bookmark Name</label>
+				<input id="bookmarkletName" type="text" class="form-control" value="PartyScript" />
+			</div>
+			<div class="form-group col-md-4">
+				<div><label>Party Mode</label></div>
+				
+				<label class="radio-inline">
+				  <input type="radio" name="inlineRadioOptions" id="partyModeInstant"> Instant Party
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" name="inlineRadioOptions" id="partyModeSurprise" checked> Surprise Party
+				</label>
+				
+			</div>			
+		</div>
+		  </div>
+		</div>	
+		<!-- END: Settings -->		
+		
+		<!-- START: Output -->
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+			<h3 class="panel-title">Preview</h3>
+		  </div>
+		  <div class="panel-body">
+				<div class="row">
+					<!--
+					<div class="col-md-6">
+				
+												
+						<h3>Script</h3>
+						<textarea id="partyScript" spellcheck="false" class="form-control" ></textarea>							
+					</div>
+					-->
+					<div class="col-md-12">
+						
+						
+						<div id="previewButtons" class="btn-group" data-toggle="buttons">
+							<label class="btn btn-primary">
+								<input type="radio" name="options" id="previewStart" autocomplete="off">
+								<span class="glyphicon glyphicon-play"></span>
+							</label>
+							<label class="btn btn-primary active">
+								<input type="radio" name="options" id="previewStop" autocomplete="off" checked> 
+								<span class="glyphicon glyphicon-stop"></span>		
+							</label>
+							<label class="btn btn-primary">
+								<input type="radio" name="options" id="previewGlobal" autocomplete="off"> 
+								<span class="glyphicon glyphicon-fire"></span>		
+							</label>					
+						</div>
+						
+						<div id="preview">
+							<h4>Lorem ipsum </h4>
+							<p>Lorem ipsum dolor sit amet, <a>consectetur adipiscing elit</a>. In ut feugiat eros. Proin aliquet euismod varius. Duis id tellus at magna lacinia commodo non eu erat. Vestibulum tristique sed turpis vel molestie. Nunc semper venenatis ex.</p>
+							<p>Nunc eget justo suscipit nunc hendrerit rhoncus. <b>Sed sollicitudin risus in</b> dapibus faucibus. Etiam a nunc convallis metus luctus suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi.</p>
+							<p>Donec pulvinar mattis ornare. <i>Fusce mi sapien, finibus a nisl nec</i>, sollicitudin aliquet ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin tristique sollicitudin tellus, et scelerisque dui.</p>
+						</div>
+					</div>
+				</div>
+
+		  </div>
+		</div>			
+			
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+			<h3 class="panel-title">About</h3>
+		  </div>
+		  <div class="panel-body">
+			<p>
+				PartyScript is by <a href="http://careers.stackoverflow.com/wstabosz" target="_blank">Walter Stabosz</a>.
+				It uses <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> and <a href="http://jquery.com" target="_blank">jQuery</a>. 
+				Favicons were generated with <a href="http://realfavicongenerator.net/">Real Favicon Generator</a>
+				Header font by <a href="http://www.google.com/fonts" target="_blank">Google Fonts</a>.
+			</p>
+			<p>
+				
+			</p>
+			<p></p>
+			<p></p>
+		  </div>
+		</div>		
+		
+		<!-- modals -->
+		<div class="modal fade" id="installModal" tabindex="-1" role="dialog" aria-labelledby="installModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="installModalLabel">Install Instructions</h4>
+			  </div>
+				<div class="modal-body">
+				
+				<div class="text-center">
+					<a id="bookmarklet" href=""><span class="glyphicon glyphicon-bookmark glyphicon-lg"></span> PartyScript</a>					
+					
+					<div class="popover right inline full-width">
+						<div class="arrow"></div>					
+						<div class="popover-content">
+						  Drag me to your browser's bookmark toolbar.
+						</div>
+				    </div>
+				</div>
+
+				<div class="spacer-1em"></div>
+				
+				
+				<div class="panel panel-primary">
+				  <div class="panel-heading">
+					<h3 class="panel-title">Where is my bookmark toolbar?</h3>
+				  </div>
+				  <div class="panel-body">
+					Select a tab to find your browser's bookmark toolbar:
+					<div style="margin-top: 1em;" class="tab-box">
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs" role="tablist">
+						  <li role="presentation" class="active"><a href="#chrome" role="tab" data-toggle="tab">Chrome</a></li>
+						  <li role="presentation"><a href="#firefox" role="tab" data-toggle="tab">Firefox</a></li>
+						  <li role="presentation"><a href="#ie" role="tab" data-toggle="tab">IE</a></li>
+						  <li role="presentation"><a href="#safari" role="tab" data-toggle="tab">Safari</a></li>
+						  <li role="presentation"><a href="#opera" role="tab" data-toggle="tab">Opera</a></li>
+						</ul>
+
+						<!-- Tab panes -->
+						<div class="tab-content">
+						
+						  <div role="tabpanel" class="tab-pane active" id="chrome">
+								<p>
+									Press <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> to show/hide the bookmark toolbar.
+								</p>
+								<p>
+									Drag-and-drop the Bookmarklet to the bookmark toolbar.
+								</p>
+						  </div>
+						  
+						  <div role="tabpanel" class="tab-pane" id="firefox">
+								<p>
+									Press <kbd>Control</kbd> + <kbd>B</kbd> to show/hide the bookmark panel.
+								</p>
+								<p>
+									Drag-and-drop the Bookmarklet to the bookmark panel.
+								</p>
+						  </div>
+						  
+						  <div role="tabpanel" class="tab-pane" id="ie">
+								<p>
+									Press <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> to show/hide the bookmark toolbar.
+								</p>
+								<p>
+									Drag-and-drop the Bookmarklet to the bookmark toolbar.
+								</p>
+								<p>
+									Internet Explorer may give you a warning message about only adding bookmarklets from websites you trust. 
+									To install the bookmarklet, you have to trust me and click Yes.
+								</p>
+						  </div>
+						  
+						  <div role="tabpanel" class="tab-pane" id="safari">						  
+							<p>
+								Press <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> to show/hide the Favorites Bar.
+							</p>														
+							<p>
+								Drag-and-drop the Bookmarklet to the bookmark toolbar.
+							</p>
+							<p class="text-muted">
+								PartyScript is untested with Safari, but it will probably work just fine. If not, install Chrome.
+							</p>
+						  </div>
+						  
+						  <div role="tabpanel" class="tab-pane" id="opera">
+							<p>
+								For information on how to install bookmarklets on Opera, please visit the
+								<a href="http://help.opera.com/Windows/12.10/en/bookmarks.html">Opera Bookmarks Help</a> page.
+							</p>							
+							<p class="text-muted">
+								PartyScript is untested with Opera, but it will probably work just fine. If not, install Chrome.
+							</p>							
+						  </div>
+						  
+						</div>
+					</div>
+				  </div>
+				</div>
+				<!-- end of browser bookmark help panel -->
+				
+				
+				<div class="panel panel-primary" id="uninstallPanel">
+				  <div class="panel-heading">
+					<h3 class="panel-title">How do I uninstall?</h3>
+				  </div>
+				  <div class="panel-body">
+					<p>
+						Why would you want to do that?
+					</p>
+					<div id="uninstallInstructions">
+						<p>
+							Ok, ok, fine. A bookmarklet is just a regular bookmark. To uninstall PartyScript, simply remove the bookmark.
+							You can usually do this by right-clicking the bookmark, and selecting <em>Remove Bookmark</em>.
+						</p>
+					</div>
+					
+				  </div>
+				</div>
+							
+
+					
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>			
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<!-- end install modal -->
+		
+		<!-- settings help modal -->
+		<div class="modal fade" id="settingsHelpModal" tabindex="-1" role="dialog" aria-labelledby="settingsHelpModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="settingsHelpModalLabel">Settings Help</h4>
+			  </div>
+			  <div class="modal-body">
+				<h4>Delay</h4>
+				<p>
+					This sets the speed of the party. The smaller the number, the faster the party.
+				</p>
+				
+				<h4>Min/Max</h4>
+				<p>
+					This sets the colors of the party.
+				</p>
+								
+				<h4>Bookmark Name</h4>
+				<p>
+					This sets the name of the bookmark when it is added to the browser's bookmarks.
+				</p>
+				
+				<h4>Party Mode</h4>
+				<p>
+					<strong>Instant Party</strong> mode kicks off the party instantly.
+				</p>
+				<p>
+					<strong>Surprise Party</strong> mode kicks off the party when the guest of honor arrives
+					(when the mouse cursor is moved). This mode is ideal for setting up on a friend's 
+					computer while he's away from his desk. The script gives you a 5-second getaway window
+					before it starts watching for mouse movements.
+				</p>
+				
+			  </div>
+			  <div class="modal-footer">			    
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Got it!</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<!-- -->
+		
+		<!-- safety warning modal -->
+		<div class="modal fade" id="safetyModal" tabindex="-1" role="dialog" aria-labelledby="safetyModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="safetyModalLabel"><span class="glyphicon glyphicon-warning-sign"></span> Photosensitive Seizure Warning</h4>
+			  </div>
+			  <div class="modal-body">
+				<p>
+					A very small percentage of individuals may experience epileptic seizures when exposed to certain light patterns or flashing lights. 
+					Exposure to certain patterns or backgrounds on a computer screen, or while playing video games, may induce an epileptic seizure in 
+					these individuals. Certain conditions may induce previously undetected epileptic symptoms even in persons who have no history of 
+					prior seizures or epilepsy.
+				</p>
+				<p>
+					This web page has been tested with the <a href="http://trace.wisc.edu/peat/" target="_blank">Photosensitive Epilepsy Analysis Tool (PEAT)</a> and
+					has failed the tests in certain conditions.
+				</p>
+				<div class="alert alert-danger" role="alert">
+					<p><strong>Do not</strong> continue if you have a history of prior seizures or epilepsy.</p>
+					<p><strong>Do not</strong> run this script on the computer of a person who may be epileptic.</p>
+					
+				</div>
+			  </div>
+			  <div class="modal-footer">
+			    <button id="warningContinueButton" type="button" class="btn btn-default pull-left">Continue</button>
+				<button id="warningCancelButton" type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<!-- END -->
+	</div>
+
+    <!-- Javascript at end of page so that it loads faster. -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="party.js"></script>
+	<script type="text/javascript" src="party-script.js"></script>
+     
+	 <script
+</body>
+</html>

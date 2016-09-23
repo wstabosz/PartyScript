@@ -1,0 +1,146 @@
+body { 
+	padding-top: 120px; 
+}
+
+textarea {
+	resize: none;
+}
+.btn-lg span.glyphicon, span.glyphicon-lg {
+    font-size: 1.2em;
+}
+#header {
+	font-family: 'Lobster', cursive;
+	font-size: 50pt;
+	color: #fff;
+	/* -webkit-text-stroke: 1px #777; */
+	 
+	 text-shadow: 
+/* outline	  */
+	 1px 1px 0 #777,
+	 -1px -1px 0 #777, 
+	 1px -1px 0 #777,
+	 -1px 1px 0 #777, 
+/* shadow	  */
+	 0 1px 0 #ccc,
+	 0 2px 0 #c9c9c9,
+	 0 3px 0 #bbb,
+	 0 4px 0 #b9b9b9,
+	 0 5px 0 #aaa,
+	 0 6px 1px rgba(0,0,0,.1),
+	 0 0 5px rgba(0,0,0,.1),
+	 0 1px 3px rgba(0,0,0,.3),
+	 0 3px 5px rgba(0,0,0,.2),
+	 0 5px 10px rgba(0,0,0,.25),
+	 0 10px 10px rgba(0,0,0,.2),
+	 0 20px 20px rgba(0,0,0,.15);	 
+
+}
+#partyScript {
+	width: 100%;
+	height: 23em;
+	font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
+}
+
+#bookmarklet {
+	border: 1px solid #999;
+	padding: 0.5em;
+	background-color: #ffa;
+	border-radius: 4px;	
+	display: inline;
+}
+#uninstallInstructions {
+	display: none;
+}
+#preview {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	margin: 1em 0;
+	padding: 0.5em;						
+}
+kbd {
+	padding: .1em .6em;
+	border: 1px solid #ccc;
+	font-size: 11px;
+	font-family: Arial,Helvetica,sans-serif;
+	background-color: #f7f7f7;
+	color: #333;
+	-moz-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+	border-radius: 3px;
+	display: inline-block;
+	margin: 0 .1em;
+	text-shadow: 0 1px 0 #fff;
+	line-height: 1.4;
+	white-space: nowrap;
+}
+.tab-box {
+	min-height: 10em;
+	border: 1px solid #ddd;
+	border-radius: 4px 4px;
+	padding: 1em;			
+}
+.nav-tabs {
+	margin-bottom: 1em;
+}
+.no-top-margin {
+	margin-top: 0 !important;
+}
+.tooltip.static {
+	opacity: 1 !important;
+}
+.tooltip.inline {
+	display: inline;
+}
+.inverse .tooltip-inner  {
+	background-color: #fff;
+	color: #000;
+	border: 1px solid #000;
+}
+.full-width .tooltip-inner, .popover.full-width  {
+	max-width: 100%;
+}
+.popover.inline {
+	display: inline-block;
+	position: relative;
+}
+
+.spacer-1em {
+	margin-top: 1em;
+}
+.inline-block {
+	display: inline-block
+}
+.badge.large {
+	font-size: 15px;
+}
+.pointer {
+	cursor: pointer;
+}
+.flip-y {
+	transform: scaleX(-1);
+	-moz-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	-ms-transform: scaleX(-1);
+}
+.circle-div {
+	border: 1px solid;
+	display: inline-block;
+	line-height: 23px;
+	height: 23px;
+	border-radius: 14px;	
+	width: 23px;
+	color: #428bca;
+	background-color: #fff;
+	text-align: center;
+	font-weight: bolder;
+	font-size: 15px;
+}
+.bump-right{
+	margin-right: 5px;
+}
+.rotate {
+    -ms-transform: rotate(-84deg),scaleX(-1); /* IE 9 */
+    -webkit-transform: rotate(-84deg),scaleX(-1); /* Chrome, Safari, Opera */
+    transform: rotate(-84deg),scaleX(-1);
+}
